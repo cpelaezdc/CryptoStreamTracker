@@ -113,7 +113,7 @@ def create_producer(first_values,topic_name,crypto_list,api_url,sleep_time):
 
 
 topic_name = 'CryptoStreamTracker'
-crypto_list = ['bitcoin', 'ethereum', 'xrp', 'tether', 'binance-coin', 'solana']
+crypto_list = ['bitcoin', 'ethereum', 'xrp', 'tether', 'binance-coin', 'solana','dogecoin']
 sleep_time = 20
 api_url = 'https://api.coincap.io/v2/assets'
 first_values = {}
