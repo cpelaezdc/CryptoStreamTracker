@@ -7,14 +7,15 @@ topic_name = 'CryptoStreamTracker'
 group_id = 'crypto_group'
 auto_offset_reset = 'earliest'
 csv_file_path = 'crypto_data.csv'
+csv_cripto_last_values = 'cripto_last_values.csv'
 fieldnames = ['timestamp','id','symbol','name','priceUsd','changePercent24Hr','firstValue','vwap24Hr']
 
 consumer = Consumer({'bootstrap.servers': 'localhost:29092', 'group.id': group_id, 'auto.offset.reset': auto_offset_reset})
 consumer.subscribe([topic_name])
 
-with open(csv_file_path, 'a', newline='') as file:
-    writer = csv.DictWriter(file, fieldnames=fieldnames)
+with open(csv_file_path, 'a', newline='') as file, open(csv_cripto_last_values, 'a', newline='') as file_last_values:
     
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
     if not file.tell():
         writer.writeheader()
         
@@ -36,8 +37,4 @@ with open(csv_file_path, 'a', newline='') as file:
         consumer.close()
         print("Close consumer")
         time.sleep(5)
-
-
-
-
 
